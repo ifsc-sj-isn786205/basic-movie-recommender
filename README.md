@@ -39,7 +39,7 @@ The application uses the following environment variables:
 
 5. **Run the application:**
    ```bash
-   python movie_recommender.py
+   python main.py
    ```
 
 6. **Test the API:**
@@ -81,7 +81,7 @@ The application uses the following environment variables:
    ```bash
    cd isn-api
    pip3 install -r requirements.txt
-   python3 movie_recommender.py
+   python3 main.py
    ```
 
 6. **Configure firewall to allow traffic:**
@@ -120,7 +120,7 @@ To run the application as a systemd service on GCP:
    Type=simple
    User=ubuntu
    WorkingDirectory=/home/ubuntu/isn-api
-   ExecStart=/usr/bin/python3 movie_recommender.py
+   ExecStart=/usr/bin/python3 main.py
    Restart=always
 
    [Install]
