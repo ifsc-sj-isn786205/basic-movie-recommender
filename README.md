@@ -55,8 +55,8 @@ The application uses the following environment variables:
    gcloud compute instances create movie-recommender \
      --zone=us-central1-a \
      --machine-type=e2-micro \
-     --image-family=ubuntu-2004-lts \
-     --image-project=ubuntu-os-cloud \
+     --create-disk=auto-delete=yes,boot=yes,device-name=instance-20250912-200551,image=projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2504-plucky-amd64-v20250911,mode=rw,size=10,type=pd-balanced \
+     --no-shielded-secure-boot \
      --tags=http-server,https-server
    ```
 
@@ -107,7 +107,8 @@ To run the application as a systemd service on GCP:
 
 1. **Create a service file:**
    ```bash
-   sudo nano /etc/systemd/system/movie-recommender.service
+   sudo apt install vim
+   sudo vim /etc/systemd/system/movie-recommender.service
    ```
 
 2. **Add the following content:**
@@ -120,7 +121,7 @@ To run the application as a systemd service on GCP:
    Type=simple
    User=ubuntu
    WorkingDirectory=/home/ubuntu/isn-api
-   ExecStart=/usr/bin/python3 main.py
+   ExecStart=/home/ubuntu/env/bin/python3 main.py
    Restart=always
 
    [Install]
