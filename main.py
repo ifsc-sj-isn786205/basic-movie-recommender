@@ -79,11 +79,15 @@ class MovieRecommender:
         ]
         
         # Try multiple search terms to find movies
-        for term in search_terms:
-            movies = self.search_movies(term)
+        while search_terms:
+            random_term = random.choice(search_terms)
+            print("Searching for movies with term:", random_term)
+            movies = self.search_movies(random_term, 1)
+            print("Found ", len(movies), " movies on page 1")
             if movies:
                 # Get a random movie from the results
                 random_movie = random.choice(movies)
+                print("Getting detailed information for movie: ", random_movie['Title'])
                 # Get detailed information
                 movie_details = self.get_movie_details(random_movie['imdbID'])
                 if movie_details:
