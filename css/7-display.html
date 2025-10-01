@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valores de display CSS</title>
+    <style>
+        .demo-item {
+            background: #e74c3c;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Valores de display CSS</h1>
+
+    <!-- VALORES INTRÍNSECOS -->
+    <div style="color: #005911;">
+        <h2>Valores Intrínsecos (padrão do navegador)</h2>
+        <p style="display: inline;">INLINE: Texto inline flui com outros inline</p>
+        <strong style="display: inline;">como este strong</strong>
+        <p>mas quebra linha aqui</p>
+
+        <hr>
+
+    
+        <p style="display: block;">BLOCK: Ocupa linha inteira</p>
+        <p style="display: block;">Cada block quebra linha</p>
+        <div style="display: block;">Div também é block</div>
+
+        <hr>
+    
+        <p style="display: list-item;">LIST-ITEM: Como item de lista</p>
+        <ul style="display: block;">
+            <li style="display: list-item;">Com marcador</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <!-- VALORES DE FLUXO -->
+    <div style="color: #580602;">
+        <h2>Valores de Fluxo</h2>
+        <div style="display: inline-block;">INLINE-BLOCK: Inline mas com largura/altura</div>
+        <div style="display: inline-block;">Fica na mesma linha</div>
+        <div style="display: block;">Mas block quebra linha</div>
+    
+        <hr>
+
+        <p style="display: contents;">CONTENTS: Não gera caixa, só conteúdo</p>
+        <div>Este div envolve o contents mas não cria caixa visual</div>
+        <p>Texto normal após contents</p>
+
+        <hr>
+
+        <div style="display: flow-root;">
+            <div style="float: left; background: #e74c3c; color: white; padding: 10px; margin-right: 10px;">Float left</div>
+            <p>TEXTO FLUI AO REDOR. flow-root corrige colapso do container. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, est. Atque iure voluptate accusamus possimus excepturi eaque eos, culpa provident quibusdam nostrum, nulla suscipit. Ipsa ducimus ad veniam atque ratione!</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- FLEXBOX -->
+    <div style="color: #3498db;">
+        <h2>Flexbox (display: flex)</h2>
+        <p>Flexbox: itens distribuídos no eixo principal</p>
+        <div style="display: flex;">
+            <div class="demo-item" style="flex: 1;">Item 1</div>
+            <div class="demo-item" style="flex: 1;">Item 2</div>
+            <div class="demo-item" style="flex: 1;">Item 3</div>
+        </div>
+
+        <hr>
+
+        <p>Inline-flex: só afeta filhos diretos</p>
+        <div style="display: inline-flex; border: 2px solid #27ae60;">
+            <span class="demo-item" style="flex: 1;">Inline</span>
+            <span class="demo-item" style="flex: 1;">Flex</span>
+        </div>
+        <span>Este texto fica na mesma linha</span>
+    </div>
+
+    <hr>
+    <!-- GRID -->
+    <div style="color: #e74c3c;">
+        <h2>CSS Grid (display: grid)</h2>
+            <p>Grid: layout bidimensional</p>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; background: #f8f9fa; padding: 15px;">
+                <div class="demo-item">1</div>
+                <div class="demo-item">2</div>
+                <div class="demo-item">3</div>
+                <div class="demo-item">4</div>
+                <div class="demo-item">5</div>
+                <div class="demo-item">6</div>
+            </div>
+
+        <hr>
+
+            <p>Inline-grid: grid inline</p>
+            <div style="display: inline-grid; grid-template-columns: repeat(2, 1fr); border: 2px solid #8e44ad;">
+                <span class="demo-item">A</span>
+                <span class="demo-item">B</span>
+                <span class="demo-item">C</span>
+                <span class="demo-item">D</span>
+            </div>
+            <span>Texto ao lado do inline-grid</span>
+    </div>
+
+    <hr>
+    <!-- TABELA -->
+    <div style="color: #27ae60;">
+        <h2>Tabela (display: table)</h2>
+        <p>Tabela completa:</p>
+        <div style="display: table; width: 100%; border: 1px solid #ddd;">
+            <div style="display: table-row;">
+                <div style="display: table-cell; background: #f2f2f2; padding: 10px;">Cabeçalho 1</div>
+                <div style="display: table-cell; background: #f2f2f2; padding: 10px;">Cabeçalho 2</div>
+            </div>
+            <div style="display: table-row;">
+                <div style="display: table-cell; padding: 10px;">Célula 1</div>
+                <div style="display: table-cell; padding: 10px;">Célula 2</div>
+            </div>
+        </div>
+
+        <hr>
+
+        <p>Inline-table:</p>
+        <div style="display: inline-table; border: 2px solid #e74c3c;">
+            <div style="display: table-row;">
+                <div style="display: table-cell; padding: 8px; background: #ffeaa7;">Inline</div>
+                <div style="display: table-cell; padding: 8px; background: #ffeaa7;">Table</div>
+            </div>
+        </div>
+        <span>Esta tabela inline fica na mesma linha</span>
+    </div>
+
+    <hr>
+
+    <!-- RUBY -->
+    <div style="color: #8e44ad;">
+        <h2>Ruby (anotações em texto asiático)</h2>
+        <p>Ruby básico:</p>
+        <div style="display: ruby;">
+            <span style="display: ruby-base;">漢字</span>
+            <span style="display: ruby-text;">かんじ</span>
+        </div>
+        <div style="display: ruby;">
+            <span style="display: ruby-base;">日本語</span>
+            <span style="display: ruby-text;">にほんご</span>
+        </div>
+
+        <hr>
+
+        <p>Ruby com containers:</p>
+        <div style="display: ruby; font-size: 18px;">
+            <span style="display: ruby-base-container;">
+                <span style="display: ruby-base;">中国語</span>
+            </span>
+            <span style="display: ruby-text-container;">
+                <span style="display: ruby-text;">zhōng wén</span>
+            </span>
+        </div>
+    </div>
+
+    <hr>
+    <!-- VALORES ESPECIAIS -->
+    <div style="color: #f39c12;">
+        <h2>Valores Especiais</h2>
+        <p>none: Elemento invisível e sem espaço</p>
+        <div style="display: none;">Este texto está oculto</div>
+        <p>Este texto aparece após o display: none</p>
+
+        <hr>
+
+        <p>run-in: Híbrido inline/block (suporte limitado)</p>
+        <div style="display: run-in; background: #e74c3c; color: white; padding: 5px;">
+            Run-in
+        </div>
+        <p>continua na mesma linha se o próximo for inline</p>
+    </div>
+
+    <!-- VALORES DE TABELA AVANÇADOS -->
+    <div style="color: #e67e22;">
+        <h2>Valores de Tabela Avançados</h2>
+
+        <p>Grupos de linha:</p>
+        <div style="display: table; width: 100%; border: 1px solid #ddd;">
+            <div style="display: table-header-group;">
+                <div style="display: table-row;">
+                    <div style="display: table-cell; padding: 10px; background: #f2f2f2;">Header 1</div>
+                    <div style="display: table-cell; padding: 10px; background: #f2f2f2;">Header 2</div>
+                </div>
+            </div>
+            <div style="display: table-row-group;">
+                <div style="display: table-row;">
+                    <div style="display: table-cell; padding: 10px;">Row 1</div>
+                    <div style="display: table-cell; padding: 10px;">Data 1</div>
+                </div>
+            </div>
+            <div style="display: table-footer-group;">
+                <div style="display: table-row;">
+                    <div style="display: table-cell; padding: 10px; background: #f2f2f2;">Footer 1</div>
+                    <div style="display: table-cell; padding: 10px; background: #f2f2f2;">Total</div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <p>Colunas:</p>
+        <div style="display: table; width: 100%;">
+            <div style="display: table-column-group;">
+                <div style="display: table-column; width: 30%;"></div>
+                <div style="display: table-column; width: 70%;"></div>
+            </div>
+            <div style="display: table-row-group;">
+                <div style="display: table-row;">
+                    <div style="display: table-cell; padding: 10px; background: #ffeaa7;">30% largura</div>
+                    <div style="display: table-cell; padding: 10px; background: #fdcb6e;">70% largura</div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <p>Caption:</p>
+        <div style="display: table; width: 100%; border: 1px solid #ddd;">
+            <div style="display: table-caption; caption-side: top; background: #3498db; color: white; padding: 10px;">Título da Tabela</div>
+            <div style="display: table-row-group;">
+                <div style="display: table-row;">
+                    <div style="display: table-cell; padding: 10px;">Dados</div>
+                    <div style="display: table-cell; padding: 10px;">Mais dados</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

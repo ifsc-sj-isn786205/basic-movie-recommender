@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidades CSS</title>
+</head>
+<body>
+
+<h1>Unidades CSS</h1>
+
+<div style="color: #005911;">
+    <h2>Absolutas (fixas)</h2>
+
+    <div style="font-size: 12px;">
+        12px = <span class="valor">12px</span>
+    </div>
+</div>
+
+<div style="color: #580602;">
+    <h2>Relativa à Raiz (html: 16px)</h2>
+
+    <div>
+        Texto normal: <span class="valor">16px</span> (container atual)
+    </div>
+    
+    <div style="font-size: 1.5rem;">
+        1.5rem = <span class="valor">24px</span> (1.5 × 16px do root)
+    </div>    
+</div>
+
+<div style="font-size: 30px; color: #160384;">
+    <h2>Relativas ao Elemento Atual (pai: 20px)</h2>
+
+    <div>
+        Texto normal: <span class="valor">20px</span> (herdado do pai)
+    </div>
+    
+    <div style="font-size: 1.5em;">
+        1.5em = <span class="valor">30px</span> (1.5 × 16px do pai)
+    </div>
+    
+    <div style="font-size: 1.2ex;">
+        1.2ex = <span class="valor">~24px</span> (1.2 × altura 'x' da fonte)
+    </div>
+    
+    <div style="font-size: 2ch;">
+        2ch = <span class="valor">~40px</span> (2 × largura do '0')
+    </div>
+    
+    <div style="font-size: 80%;">
+        80% = <span class="valor">16px</span> (80% × 20px do pai)
+    </div>    
+</div>
+
+<div style="color: #650379;">
+    <h2>Viewport</h2>
+
+    <div style="font-size: 3vw;">
+        3vw = <span class="valor">~3% largura</span> (muda ao redimensionar)
+    </div>
+    
+    <div style="font-size: 3vh;">
+        3vh = <span class="valor">~3% altura</span> (muda ao redimensionar)
+    </div>
+    
+    <div style="font-size: 2vmin;">
+        2vmin = <span class="valor">2% menor lado</span> (largura ou altura)
+    </div>
+    
+    <div style="font-size: 2vmax;">
+        2vmax = <span class="valor">2% maior lado</span> (largura ou altura)
+    </div>    
+</div>
+
+</body>
+</html>

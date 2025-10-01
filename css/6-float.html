@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float CSS</title>
+    
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        h2 { color: #666; margin-top: 30px; }
+        
+        /* Estilos para cada seção */
+        .sem-float img { width: 300px; height: 100px; }
+        .float-right img { float: right; width: 300px; height: 100px; }
+        .float-left img { float: left; width: 300px; height: 100px; margin-right: 10px; }
+        .clear { clear: both; }
+        .shape-circle { 
+            float: left; 
+            width: 300px; 
+            height: 100px; 
+            margin-right: 300px;
+            shape-outside: circle(10%);
+        }
+    </style>
+</head>
+<body>
+    <h1>Propriedade Float CSS - Exemplos Simples</h1>
+
+    <!-- 1. SEM FLOAT -->
+    <div class="sem-float">
+        <h2>1. Sem Float (padrão)</h2>
+        <p>
+            <img src="https://www.ifsc.edu.br/image/layout_set_logo?img_id=902745&t=1757092924021" alt="logo ifsc">
+            Este é um parágrafo normal. A imagem ocupa sua própria linha e o texto continua abaixo dela.
+        </p>
+        <p>O texto não flui ao redor da imagem.</p>
+    </div>
+
+    <!-- 2. FLOAT RIGHT -->
+    <div class="float-right">
+        <h2>2. float: right</h2>
+        <p>
+            <img src="https://www.ifsc.edu.br/image/layout_set_logo?img_id=902745&t=1757092924021" alt="logo ifsc">
+            Este parágrafo tem uma imagem com float: right. O texto flui ao redor da imagem que fica à direita.
+        </p>
+        <p>O texto continua fluindo ao redor da imagem.</p>
+    </div>
+
+    <!-- 3. FLOAT LEFT -->
+    <div class="float-left">
+        <h2>3. float: left</h2>
+        <p>
+            <img src="https://www.ifsc.edu.br/image/layout_set_logo?img_id=902745&t=1757092924021" alt="logo ifsc">
+            Este parágrafo tem uma imagem com float: left. A imagem fica à esquerda e o texto flui ao redor dela.
+        </p>
+        <p>O texto continua fluindo ao redor da imagem.</p>
+    </div>
+
+    <!-- 4. CLEAR -->
+    <div>
+        <h2>4. clear: both</h2>
+        
+        <!-- Exemplo SEM clear -->
+        <h3>Sem clear: both</h3>
+        <div style="border: 2px solid red; padding: 10px; margin-bottom: 20px;">
+            <img src="https://www.ifsc.edu.br/image/layout_set_logo?img_id=902745&t=1757092924021" alt="logo ifsc" style="float: left; width: 300px; height: 100px; margin-right: 15px;">
+            <p>Este parágrafo tem uma imagem flutuante à esquerda. O texto deve fluir ao redor da imagem que está flutuando. Este é um parágrafo mais longo para demonstrar como o texto se comporta quando não há clear: both aplicado.</p>
+            <p>Este parágrafo aparece SEM clear - ele flui ao redor da imagem flutuante acima. O texto continua fluindo ao redor da imagem porque não há nenhum elemento com clear: both para parar o fluxo.</p>
+        </div>
+        
+        <!-- Exemplo COM clear -->
+        <h3>Com clear: both</h3>
+        <div style="border: 2px solid green; padding: 10px;">
+            <img src="https://www.ifsc.edu.br/image/layout_set_logo?img_id=902745&t=1757092924021" alt="logo ifsc" style="float: left; width: 300px; height: 100px; margin-right: 15px;">
+            <p>Este parágrafo tem uma imagem flutuante à esquerda. O texto deve fluir ao redor da imagem que está flutuando. Este é um parágrafo mais longo para demonstrar como o texto se comporta quando não há clear: both aplicado.</p>
+            <div class="clear"></div>
+            <p>Este parágrafo aparece APÓS clear: both - ele não flui ao redor da imagem, vai para uma nova linha. O clear: both força este parágrafo a começar abaixo da imagem flutuante.</p>
+        </div>
+    </div>
+
+    <!-- 5. SHAPE-OUTSIDE -->
+    <div>
+        <h2>5. shape-outside: circle()</h2>
+        <p>
+            <img src="https://www.ifsc.edu.br/image/layout_set_logo?img_id=902745&t=1757092924021" alt="logo ifsc" class="shape-circle">
+            Este parágrafo demonstra o uso de shape-outside: circle(). O texto flui ao redor de uma forma circular em vez de um retângulo. A imagem tem float: left mas o texto segue o contorno circular definido pela propriedade shape-outside. Isso cria um efeito visual mais interessante onde o texto se adapta à forma da imagem.
+            <br>
+            O shape-outside permite que o texto flua ao redor de formas personalizadas, não apenas retângulos.
+            <br>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, est. Atque iure voluptate accusamus possimus excepturi eaque eos, culpa provident quibusdam nostrum, nulla suscipit. Ipsa ducimus ad veniam atque ratione!
+        </p>
+    </div>
+
+</body>
+</html>

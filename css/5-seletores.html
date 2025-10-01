@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seletores CSS</title>
+    
+    <style>
+        /* Estilo básico */
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        h2 { color: #666; margin-top: 30px; }
+        
+        /* 1. SELETORES DE ELEMENTO */
+        p { color: blue; }
+        h3 { color: red; }
+        
+        /* 2. SELETORES DE CLASSE */
+        .destaque { background-color: yellow; }
+        .borda { border: 2px solid black; padding: 10px; }
+        
+        /* 3. SELETORES DE ID */
+        #especial { background-color: lightgray; padding: 15px; }
+        
+        /* 4. PSEUDO-CLASSES */
+        a:hover { color: rgb(122, 162, 5); }
+        li:first-child { font-weight: bold; }
+        
+        /* 5. PSEUDO-ELEMENTOS */
+        .primeira-letra::first-letter { font-size: 2em; color: green; }
+        
+        /* 6. SELETORES DE ATRIBUTO */
+        [type="text"] { border: 3px solid blue; }
+    </style>
+</head>
+<body>
+
+    <h1>Seletores CSS - Exemplos Simples</h1>
+    
+    <!-- 1. SELETORES DE ELEMENTO -->
+    <h2>1. Seletores de Elemento</h2>
+    <p>Este parágrafo fica azul (seletor p)</p>
+    <h3>Este h3 fica vermelho (seletor h3)</h3>
+    <p>Outro parágrafo também fica azul</p>
+
+    <!-- 2. SELETORES DE CLASSE -->
+    <h2>2. Seletores de Classe</h2>
+    <div class="destaque">Este div tem classe .destaque (fundo amarelo)</div>
+    <div class="borda">Este div tem classe .borda (borda preta)</div>
+    <p class="destaque">Parágrafo com classe .destaque</p>
+
+    <!-- 3. SELETORES DE ID -->
+    <h2>3. Seletores de ID</h2>
+    <div id="especial">Este div tem id="especial" (fundo cinza)</div>
+    <p>Parágrafo normal</p>
+
+    <!-- 4. PSEUDO-CLASSES -->
+    <h2>4. Pseudo-classes</h2>
+    <p>Passe o mouse sobre o link: <a href="#">Link com hover</a></p>
+    <ul>
+        <li>Primeiro item (negrito)</li>
+        <li>Item normal</li>
+        <li>Item normal</li>
+    </ul>
+
+    <!-- 5. PSEUDO-ELEMENTOS -->
+    <h2>5. Pseudo-elementos</h2>
+    <p class="primeira-letra">Este parágrafo tem a primeira letra grande e verde</p>
+    <p>Este parágrafo normal (sem efeito)</p>
+    <p class="primeira-letra">Outro parágrafo com primeira letra grande</p>
+
+    <!-- 6. SELETORES DE ATRIBUTO -->
+    <h2>6. Seletores de Atributo</h2>
+    <p>Campo de texto: <input type="text" placeholder="Digite aqui"></p>
+    <p>Campo normal: <input placeholder="Sem type"></p>
+
+</body>
+</html>

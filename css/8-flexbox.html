@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox CSS</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; margin-top: 30px; }
+        h2 { color: #666; margin-top: 20px; }
+        
+        /* Container base */
+        .container {
+            display: flex;
+            border: 2px solid #333;
+            margin: 10px 0;
+            padding: 10px;
+            min-height: 100px;
+        }
+        
+        /* Itens base */
+        .item {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            text-align: center;
+            border-radius: 5px;
+            min-width: 50px;
+        }
+        
+        /* Cores para diferentes itens */
+        .item:nth-child(1) { background-color: #e74c3c; }
+        .item:nth-child(2) { background-color: #f39c12; }
+        .item:nth-child(3) { background-color: #27ae60; }
+        .item:nth-child(4) { background-color: #3498db; }
+        .item:nth-child(5) { background-color: #9b59b6; }
+        .item:nth-child(6) { background-color: #f1c40f; }
+        .item:nth-child(7) { background-color: #e67e22; }
+        .item:nth-child(8) { background-color: #95a5a6; }
+        
+        /* Classes específicas para exemplos */
+        .nowrap { flex-wrap: nowrap; }
+        .wrap { flex-wrap: wrap; }
+        .wrap-reverse { flex-wrap: wrap-reverse; }
+        
+        .justify-start { justify-content: flex-start; }
+        .justify-end { justify-content: flex-end; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-around { justify-content: space-around; }
+        .justify-evenly { justify-content: space-evenly; }
+        
+        .align-start { align-items: flex-start; }
+        .align-end { align-items: flex-end; }
+        .align-center { align-items: center; }
+        .align-stretch { align-items: stretch; }
+        .align-baseline { align-items: baseline; }
+        
+        .align-self-start { align-self: flex-start; }
+        .align-self-end { align-self: flex-end; }
+        .align-self-center { align-self: center; }
+        
+        .flex-grow-1 { flex-grow: 1; }
+        .flex-grow-2 { flex-grow: 2; }
+        .flex-shrink-0 { flex-shrink: 0; }
+        .flex-shrink-2 { flex-shrink: 2; }
+        .flex-basis-200 { flex-basis: 200px; }
+        .flex-basis-100 { flex-basis: 100px; }
+        
+        .order-1 { order: 1; }
+        .order-2 { order: 2; }
+        .order-3 { order: 3; }
+        .order--1 { order: -1; }
+        
+        .tall { height: 80px; }
+        .short { height: 40px; }
+        .wide { width: 150px; }
+    </style>
+</head>
+<body>
+    <h1>Flexbox CSS - Exemplos Completos</h1>
+
+    <!-- 1. FLEX-DIRECTION -->
+    <h2>1. flex-direction</h2>
+    <h3>row (padrão)</h3>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>row-reverse</h3>
+    <div class="container" style="flex-direction: row-reverse;">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>column</h3>
+    <div class="container" style="flex-direction: column;">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>column-reverse</h3>
+    <div class="container" style="flex-direction: column-reverse;">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <!-- 2. FLEX-WRAP -->
+    <h2>2. flex-wrap</h2>
+    <h3>nowrap (padrão)</h3>
+    <div class="container nowrap" style="width: 300px;">
+        <div class="item wide">1</div>
+        <div class="item wide">2</div>
+        <div class="item wide">3</div>
+        <div class="item wide">4</div>
+    </div>
+
+    <h3>wrap</h3>
+    <div class="container wrap" style="width: 300px;">
+        <div class="item wide">1</div>
+        <div class="item wide">2</div>
+        <div class="item wide">3</div>
+        <div class="item wide">4</div>
+    </div>
+
+    <h3>wrap-reverse</h3>
+    <div class="container wrap-reverse" style="width: 300px;">
+        <div class="item wide">1</div>
+        <div class="item wide">2</div>
+        <div class="item wide">3</div>
+        <div class="item wide">4</div>
+    </div>
+
+    <!-- 3. FLEX-FLOW -->
+    <h2>3. flex-flow (shorthand)</h2>
+    <h3>flex-flow: column wrap</h3>
+    <div class="container" style="flex-flow: column wrap; height: 200px;">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
+
+    <!-- 4. JUSTIFY-CONTENT -->
+    <h2>4. justify-content</h2>
+    <h3>flex-start</h3>
+    <div class="container justify-start">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>flex-end</h3>
+    <div class="container justify-end">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>center</h3>
+    <div class="container justify-center">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>space-between</h3>
+    <div class="container justify-between">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>space-around</h3>
+    <div class="container justify-around">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>space-evenly</h3>
+    <div class="container justify-evenly">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <!-- 5. ALIGN-ITEMS -->
+    <h2>5. align-items</h2>
+    <h3>flex-start</h3>
+    <div class="container align-start" style="height: 150px;">
+        <div class="item tall">1</div>
+        <div class="item short">2</div>
+        <div class="item tall">3</div>
+    </div>
+
+    <h3>flex-end</h3>
+    <div class="container align-end" style="height: 150px;">
+        <div class="item tall">1</div>
+        <div class="item short">2</div>
+        <div class="item tall">3</div>
+    </div>
+
+    <h3>center</h3>
+    <div class="container align-center" style="height: 150px;">
+        <div class="item tall">1</div>
+        <div class="item short">2</div>
+        <div class="item tall">3</div>
+    </div>
+
+    <h3>stretch</h3>
+    <div class="container align-stretch" style="height: 150px;">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <!-- 6. ALIGN-SELF -->
+    <h2>6. align-self</h2>
+    <div class="container align-center" style="height: 150px;">
+        <div class="item">1</div>
+        <div class="item align-self-start">2 (start)</div>
+        <div class="item">3</div>
+        <div class="item align-self-end">4 (end)</div>
+        <div class="item">5</div>
+    </div>
+
+    <!-- 7. FLEX PROPERTIES -->
+    <h2>7. flex-grow, flex-shrink, flex-basis</h2>
+    <h3>flex-grow</h3>
+    <div class="container">
+        <div class="item">1 (normal)</div>
+        <div class="item flex-grow-1">2 (grow: 1)</div>
+        <div class="item flex-grow-2">3 (grow: 2)</div>
+    </div>
+
+    <h3>flex-shrink</h3>
+    <div class="container" style="width: 200px;">
+        <div class="item wide">1 (normal)</div>
+        <div class="item wide flex-shrink-0">2 (shrink: 0)</div>
+        <div class="item wide flex-shrink-2">3 (shrink: 2)</div>
+    </div>
+
+    <h3>flex-basis</h3>
+    <div class="container">
+        <div class="item">1 (normal)</div>
+        <div class="item flex-basis-100">2 (basis: 100px)</div>
+        <div class="item flex-basis-200">3 (basis: 200px)</div>
+    </div>
+
+    <!-- 8. ORDER -->
+    <h2>8. order</h2>
+    <div class="container">
+        <div class="item order-2">1 (order: 2)</div>
+        <div class="item order-1">2 (order: 1)</div>
+        <div class="item order-3">3 (order: 3)</div>
+        <div class="item order--1">4 (order: -1)</div>
+    </div>
+
+    <!-- 9. ALIGN-CONTENT -->
+    <h2>9. align-content (com flex-wrap)</h2>
+    <h3>flex-start</h3>
+    <div class="container wrap" style="height: 200px; align-content: flex-start;">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+    </div>
+
+    <h3>flex-end</h3>
+    <div class="container wrap" style="height: 200px; align-content: flex-end;">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+    </div>
+
+    <h3>center</h3>
+    <div class="container wrap" style="height: 200px; align-content: center;">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+    </div>
+
+    <h3>space-between</h3>
+    <div class="container wrap" style="height: 200px; align-content: space-between;">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+    </div>
+
+</body>
+</html>
