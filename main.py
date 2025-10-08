@@ -8,6 +8,7 @@ import random
 import requests
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
+from service import RecommendationService
 
 # Load environment variables
 load_dotenv()
@@ -55,6 +56,7 @@ class MovieRecommender:
         }
         
         try:
+            print(f"Retrieving movie details...")
             response = requests.get(self.base_url, params=params)
             response.raise_for_status()
             data = response.json()
@@ -120,6 +122,7 @@ class MovieRecommender:
 
 # Initialize the recommender
 recommender = MovieRecommender()
+recommendation_service = RecommendationService()
 
 @app.route('/')
 def home():
@@ -128,6 +131,7 @@ def home():
         'message': 'Movie Recommendation API',
         'endpoints': {
             '/recommend': 'GET - Get a random movie recommendation',    
+            '/recommendations': 'GET - Get recent recommendations from database',
         },
         'example': '/recommend'
     })
@@ -136,7 +140,21 @@ def home():
 def recommend_random():
     """Get a random movie recommendation"""
     recommendation = recommender.recommend_movie()
+    
+    # Save to MongoDB if recommendation is successful
+    if 'error' not in recommendation:
+        save_result = recommendation_service.save_recommendation(recommendation)
+        recommendation['saved_to_db'] = save_result['success']
+        if not save_result['success']:
+            recommendation['db_error'] = save_result['error']
+    
     return jsonify(recommendation)
+
+@app.route('/recommendations')
+def get_recommendations():
+    """Get recent recommendations from MongoDB"""
+    result = recommendation_service.get_recommendations()
+    return jsonify(result)
 
 if __name__ == '__main__':
     # For GCP deployment, use 0.0.0.0 to bind to all interfaces
