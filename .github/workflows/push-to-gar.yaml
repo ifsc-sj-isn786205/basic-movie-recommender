@@ -38,3 +38,4 @@ jobs:
 
       - name: Output image
         run: echo "Pushed image: ${AR_LOCATION}-docker.pkg.dev/${GCP_PROJECT}/${AR_REPO}/${IMAGE_NAME}:$GITHUB_SHA"
+ 
