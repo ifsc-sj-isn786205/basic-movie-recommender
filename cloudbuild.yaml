@@ -1,14 +1,13 @@
 substitutions:
-  _PROJECT: isn2025-2
-  _SERVICE_ACCOUNT: etorresini@isn2025-2.iam.gserviceaccount.com
+#  _PROJECT: isn2025-2
+#  _SERVICE_ACCOUNT: etorresini@isn2025-2.iam.gserviceaccount.com
   _REGION: southamerica-east1
   _REPO: ifsc-sj-isn786205
   _IMAGE: basic-movie-recommender
   _TAG: $SHORT_SHA
-build:
-  serviceAccount: projects/${_PROJECT}/serviceAccounts/${_SERVICE_ACCOUNT}
-  options:
-    logging: CLOUD_LOGGING_ONLY
+#serviceAccount: projects/${_PROJECT}/serviceAccounts/${_SERVICE_ACCOUNT}
+options:
+  logging: CLOUD_LOGGING_ONLY
 steps:
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     entrypoint: bash
