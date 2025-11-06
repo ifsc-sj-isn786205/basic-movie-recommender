@@ -1,0 +1,48 @@
+# cloudbuild.yaml - constrói e publica uma imagem Docker no Artifact Registry
+
+substitutions:
+  _REGION: southamerica-east1
+  _REPO: ifsc-sj-isn786205
+  _IMAGE: basic-movie-recommender
+  _TAG: $SHORT_SHA
+
+steps:
+  # Configura autenticação Docker para o Artifact Registry
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        gcloud auth configure-docker ${_REGION}-docker.pkg.dev -q
+
+  # Build da imagem
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:${_TAG}
+      - .
+
+  # Tag opcional "latest"
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - tag
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:${_TAG}
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:latest
+
+  # Push das tags
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:${_TAG}
+
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:latest
+
+images:
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:${_TAG}
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_IMAGE}:latest
+
+timeout: "1200s"
