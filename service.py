@@ -1,35 +1,40 @@
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 from pymongo import MongoClient
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv()
 
 
 class RecommendationService:
     """Recommendation storage and retrieval"""
 
     def __init__(self):
+        # We fetch the variable directly.
+        # In Cloud Functions, this is set in the Deployment Configuration.
         connection_string = os.getenv("MONGODB_CONNECTION_STRING")
-        if not connection_string:
-            raise ValueError(
-                "MONGODB_CONNECTION_STRING not found in environment variables"
-            )
 
-        # Connect to MongoDB
-        self.client = MongoClient(connection_string)
-        self.db = self.client["movie_recommendations"]
-        self.collection = self.db["recommendations"]
+        if not connection_string:
+            # We print a warning instead of crashing, so the Function doesn't 500 error
+            # if the DB is temporarily misconfigured.
+            print(
+                "WARNING: MONGODB_CONNECTION_STRING not set. Database features will fail."
+            )
+            self.client = None
+            self.db = None
+            self.collection = None
+        else:
+            # connectTimeoutMS=2000 prevents the function from hanging if DB is down
+            self.client = MongoClient(connection_string, connectTimeoutMS=2000)
+            self.db = self.client["movie_recommendations"]
+            self.collection = self.db["recommendations"]
 
     def save_recommendation(self, recommendation_data):
-        """Save a recommendation"""
-        try:
-            # Create a copy to avoid modifying the original data
-            data_to_save = recommendation_data.copy()
-            data_to_save["created_at"] = datetime.utcnow()
+        if not self.collection:
+            return {"success": False, "error": "Database not configured"}
 
-            # Insert document
+        try:
+            data_to_save = recommendation_data.copy()
+            # Use timezone-aware UTC (Best practice)
+            data_to_save["created_at"] = datetime.now(timezone.utc)
+
             result = self.collection.insert_one(data_to_save)
             return {"success": True, "id": str(result.inserted_id)}
 
@@ -37,16 +42,16 @@ class RecommendationService:
             return {"success": False, "error": str(e)}
 
     def get_recommendations(self, limit=10):
-        """Get recent recommendations from MongoDB"""
+        if not self.collection:
+            return {"success": False, "error": "Database not configured"}
+
         try:
             cursor = self.collection.find().sort("created_at", -1).limit(limit)
             recommendations = list(cursor)
 
-            # Convert datetime objects to strings for JSON serialization
             for rec in recommendations:
                 if "created_at" in rec and rec["created_at"]:
                     rec["created_at"] = rec["created_at"].isoformat()
-                # Remove _id field which is not JSON serializable
                 if "_id" in rec:
                     rec["id"] = str(rec["_id"])
                     del rec["_id"]
@@ -54,7 +59,3 @@ class RecommendationService:
             return {"success": True, "recommendations": recommendations}
         except Exception as e:
             return {"success": False, "error": str(e)}
-
-    def close_connection(self):
-        """Close MongoDB connection"""
-        self.client.close()
