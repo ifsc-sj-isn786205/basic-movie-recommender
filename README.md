@@ -1,6 +1,6 @@
 # Movie Recommendation API
 
-A simple Python Flask application that provides movie recommendations using a third-party API. This application is designed to run on Google Cloud Platform (GCP) Compute Engine.
+A simple Python Flask application that provides movie recommendations using a third-party API. This application is designed to run on Google Cloud un Functions.
 
 ## Features
 
