@@ -27,7 +27,7 @@ class RecommendationService:
             self.collection = self.db["recommendations"]
 
     def save_recommendation(self, recommendation_data):
-        if not self.collection:
+        if self.collection is None:
             return {"success": False, "error": "Database not configured"}
 
         try:
@@ -42,7 +42,7 @@ class RecommendationService:
             return {"success": False, "error": str(e)}
 
     def get_recommendations(self, limit=10):
-        if not self.collection:
+        if self.collection is None:
             return {"success": False, "error": "Database not configured"}
 
         try:
